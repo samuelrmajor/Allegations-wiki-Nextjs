@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model Perp {
+  id         String      @id @default(cuid())
+  ID1        String      @unique
+  ID2        String      @unique
+  DETDESC    String
+  WEBSITEURL String
+  IMAGEURL   String
+  DETDESCURL String
+  SVCOUT     Float
+  LROUT      Float
+  FULLNAME   String
+  WEBID      String      @unique
+  PERPDESC   String
+  PerpPublic PerpPublic?
+  PerpVotes  PerpVotes?
+}
+
+model PerpPublic {
+  id        String @id @default(cuid())
+  ID1       String @unique
+  IMAGEURL  String
+  VIEWCOUNT Int
+  FULLNAME  String
+  WEBID     String @unique
+  PERPDESC  String
+  PERP      Perp   @relation(fields: [perpId], references: [id])
+  perpId    String @unique
+}
+
+model PerpVotes {
+  id                    String @id @default(cuid())
+  ID1                   String @unique
+  ID2                   String @unique
+  WEBID                 String
+  notCancelledCount     Int
+  cancelledCount        Int
+  sexualCount           Int
+  domesticViolenceCount Int
+  discriminationCount   Int
+  otherCount            Int
+  unsureCount           Int
+  PERP                  Perp   @relation(fields: [perpId], references: [id])
+  perpId                String @unique
+}
