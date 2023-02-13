@@ -268,8 +268,31 @@ a {
 /* .Mui-focused .MuiOutlinedInput-notchedOutline {
  border-color: rgba(189, 4, 4, 0.863)} */
 
+
  .MuiInputLabel-outlined.Mui-focused {
    color: rgba(189, 4, 4, 0.863) }
+
+
+@media only screen and (min-width: 707px) {
+  .disclaimer-parent {
+    padding-top: 15px;
+  }
+
+  .disclaimer-parent {
+    width: 60vw;
+  }
+
+
+}
+
+
+.disclaimer-parent {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50vw
+
+}
 
 
 /* .pp-info-vote-options > div{

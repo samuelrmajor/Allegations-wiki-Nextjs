@@ -60,7 +60,7 @@ const SearchBigForm = () => {
               searchedName.length > 1 ? "No Results Found" : "Search Perps"
             }
             getOptionLabel={(option) =>
-              typeof option === "string" ? option : option.fullname
+              typeof option === "string" ? option : option.FULLNAME
             }
             loading={searchedName.length > 1 ? true : false}
             filterOptions={(x) => x}
@@ -75,7 +75,7 @@ const SearchBigForm = () => {
               }
             }}
             isOptionEqualToValue= {(option, value)=>{
-              return option.webid === value.webid
+              return option.WEBID === value.WEBID
             }}
             onInputChange={(event, value, reason) => {
               if (reason === "reset") {
@@ -94,9 +94,9 @@ const SearchBigForm = () => {
               />
             )}
             renderOption={(props, option) => {
-              const imageurl = option.imageurl;
-              const fullname = option.fullname;
-              const perpdesc = option.perpdesc;
+              const imageurl = option.IMAGEURL;
+              const fullname = option.FULLNAME;
+              const perpdesc = option.PERPDESC;
 
               return (
                 <Link
@@ -104,7 +104,7 @@ const SearchBigForm = () => {
                     textDecoration: "none",
                     color: "black",
                   }}
-                  href={`/perp/${option.webid}`}
+                  href={`/perp/${option.WEBID}`}
                 >
                   <Box
                     component="span"
@@ -123,7 +123,7 @@ const SearchBigForm = () => {
                         marginRight: "8px"
                       }}
                       src={
-                        imageurl !== null
+                        imageurl !== "NONE"
                           ? imageurl
                           : "https://media.istockphoto.com/id/1220827245/vector/anonymous-gender-neutral-face-avatar-incognito-head-silhouette.jpg?s=612x612&w=0&k=20&c=GMdiPt_h8exnrAQnNo7dIKjwZyYqjH4lRQqV8AOx4QU="
                       }
@@ -132,7 +132,7 @@ const SearchBigForm = () => {
                       height={25}
                     />
                     {"   "} {fullname} {"   "}
-                    {perpdesc != "NONE" && perpdesc != null
+                    {perpdesc != "NONE" && perpdesc != null && perpdesc != ''
                       ? "   (" + perpdesc + ")"
                       : ""}
                   </Box>

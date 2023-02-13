@@ -32,8 +32,9 @@ const PerpInfoCard = ({ perpInfo, myPerpCancelled }) => {
               : "https://media.istockphoto.com/id/1220827245/vector/anonymous-gender-neutral-face-avatar-incognito-head-silhouette.jpg?s=612x612&w=0&k=20&c=GMdiPt_h8exnrAQnNo7dIKjwZyYqjH4lRQqV8AOx4QU="
           }
           alt="test"
-          width={500}
-          height={500}
+          width={250}
+          height={300}
+          sizes ="(max-width: 50px) 40vw, (max-width:50px) 15vw, 33vw"
         />
       </div>
       <div className="pp-info">

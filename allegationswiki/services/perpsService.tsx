@@ -1,5 +1,12 @@
 
 const getPerpsFiltered = async (myname) => {
+
+    const response = await fetch(`/api/perp/perpSearch/${myname}`)
+    const data = await response.json()
+    console.log('perpService: getPerpsFiltered data', data)
+    return data
+
+
     return [
       {
         fullname: "JOHN F KENNEDY",

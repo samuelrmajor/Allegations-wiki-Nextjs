@@ -34,9 +34,7 @@ export default SpecificPerp;
 export async function getStaticProps(context) {
   const { params } = context;
   const myData = await perpsDataRetrievalUtil.getSpecificPerp(params.perpid);
-
   if(!myData) return {notFound:true}
-
   return {
     props: {
       perpInfo: myData,
@@ -55,11 +53,15 @@ export async function getStaticProps(context) {
 // }
 
 export async function getStaticPaths() {
+
+const myPerps = await perpsDataRetrievalUtil.getTopPerps();
+
+const myPerpIds = myPerps.map((perp) => {
+  return { params: { perpid: perp.WEBID } };
+});
+
   return {
-    paths: [
-      { params: { perpid: "JFK_WEBID" } },
-      { params: { perpid: "FDR_WEBID" } },
-    ],
+    paths: myPerpIds,
     fallback: 'blocking',
   };
 }
