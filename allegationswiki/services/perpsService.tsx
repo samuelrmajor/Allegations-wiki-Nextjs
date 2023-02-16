@@ -29,7 +29,9 @@ const getSpecificPerp = async (mywebid) => {
 };
 
 const getRandomPerp = async () => {
-    //CREATE NEXTJS API
+    const response = await fetch(`/api/perp/random`);
+    const data = await response.json();
+    return data;
 };
 
 const votePerp = async (mywebid, myvote) => {

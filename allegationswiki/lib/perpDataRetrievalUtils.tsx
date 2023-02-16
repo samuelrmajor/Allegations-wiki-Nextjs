@@ -36,11 +36,14 @@ const getSpecificPerp = async (mywebid) => {
 }
 
 
-// const getRandomPerp = async () => {
-//   const { data, error, status } = await supabase.rpc("get_random_perp");
-//   if (error) return "Error - Random Perp Search failed";
-//   return data;
-// };
+const getRandomPerp = async () => {
+          const productsCount = await prisma.perp.count();
+          const skip = Math.floor(Math.random() * productsCount);
+          return await prisma.perp.findMany({
+            take: 1,
+            skip: skip,
+          });
+};
 
 
 
@@ -68,5 +71,5 @@ const getTopPerps = async () => {
 
 }
 
-export default { getSpecificPerp, getPerpsFiltered, getTopPerps};
+export default { getSpecificPerp, getPerpsFiltered, getTopPerps, getRandomPerp};
 

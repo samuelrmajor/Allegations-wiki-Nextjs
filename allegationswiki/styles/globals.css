@@ -295,6 +295,27 @@ a {
 }
 
 
+@media only screen and (min-width: 707px) {
+  .about-parent {
+    padding-top: 15px;
+  }
+
+  .about-parent {
+    width: 60vw;
+  }
+
+
+}
+
+
+.about-parent {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50vw
+}
+
+
 /* .pp-info-vote-options > div{
   background-color: cadetblue;
   display: flex;
