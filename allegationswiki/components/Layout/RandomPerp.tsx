@@ -18,10 +18,9 @@ useEffect(() => {
 })}, [currentPerp]);
 
 
-const handleClick = async (e) => {
+const handleClick = (e) => {
   e.preventDefault();
   router.push(`/perp/${randomPerpInit}`);
-  const myData = await perpsService.getRandomPerp()
   setCurrentPerp(randomPerpInit)
 };
 
