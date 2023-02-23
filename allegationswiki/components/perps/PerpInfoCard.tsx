@@ -52,6 +52,7 @@ const PerpInfoCard = ({ perpInfo, myPerpCancelled }) => {
           </span>
         </div>
         <PerpVotingComponent
+          key={perpInfo.WEBID}
           perpInfo={perpInfo}
           myPerpCancelled={myPerpCancelled}
         />

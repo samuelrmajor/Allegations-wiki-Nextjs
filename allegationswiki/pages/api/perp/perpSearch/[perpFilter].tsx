@@ -27,7 +27,6 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-
     res.status(200).json(filteredPerps);
   } else if (req.method === "POST") {
   } else if (req.method === "PUT") {

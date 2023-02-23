@@ -5,7 +5,7 @@ import PerpInfoCard from "@/components/perps/PerpInfoCard";
 const SpecificPerp = ({ perpInfo }) => {
   const router = useRouter();
   const { perpid } = router.query;
-  const myPerpCancelled = perpInfo.svcout >= 0.65 || perpInfo.lrout >= 0.65;
+  const myPerpCancelled = perpInfo.SVCOUT >= 0.65 || perpInfo.LROUT >= 0.65;
 //   const imgBorderStyle = myPerpCancelled ? "#8B0000" : "#006400";
 //   const imgStyle = { border: "7px solid " + imgBorderStyle };
 //   const nameStyle = { fontSize: "30px" };

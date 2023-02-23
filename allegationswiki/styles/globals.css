@@ -251,9 +251,10 @@ a {
 
 }
 
-.q1>button {
+.q1>Button {
   flex-basis: 100%;
   margin: 2vw;
+  outline-color: black;
 
 }
 

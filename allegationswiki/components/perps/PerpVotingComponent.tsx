@@ -1,10 +1,13 @@
 import { useState } from "react";
 import perpsService from '../../services/perpsService'
+import { Button } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { purple } from "@mui/material/colors";
+
 
 const PerpVotingComponent = ({ perpInfo, myPerpCancelled}) => {
     const [perpVoteStage, setPerpVoteStage] = useState("Q1");
     const [displayQuestions, setDisplayQuestions] = useState(true)
-
   const handleQ1Click = async (event) =>{
     event.preventDefault();
     if (event.target.name === 'cancelledQ1') {
@@ -18,7 +21,7 @@ const PerpVotingComponent = ({ perpInfo, myPerpCancelled}) => {
           setDisplayQuestions(false);
        }, 3000);
     }
-
+//test
     if (event.target.name==='unsureQ1'){
         const cancelledResponse = await perpsService.votePerp(perpInfo.WEBID, 1);
     }
@@ -68,55 +71,85 @@ const PerpVotingComponent = ({ perpInfo, myPerpCancelled}) => {
     };
 
 
-
+const theme = createTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: "#eeeeee",
+    },
+    secondary: {
+      // This is green.A700 as hex.
+      main: "#C45956",
+    },
+  },
+});
 
   const q1Form = (
     <div className="q1">
-      <button
+      <Button variant="contained"
         name="cancelledQ1"
         style={{ color: "red" }}
         onClick={handleQ1Click}
       >
         Cancelled
-      </button>
-      <button
+      </Button>
+      <Button variant="contained"
         name="unsureQ1"
         style={{ color: "Orange" }}
         onClick={handleQ1Click}
       >
         Unsure
-      </button>
-      <button
+      </Button>
+      <Button variant="contained"
         name="notCancelledQ1"
         style={{ color: "Green" }}
         onClick={handleQ1Click}
       >
         Not Cancelled
-      </button>
+      </Button>
     </div>
   );
 
   const q2Form = (
     <div className="q2">
-      <button name="sexualQ2" onClick={handleQ2Click}>
+      <Button
+        variant="contained"
+        color="secondary"
+        name="sexualQ2"
+        onClick={handleQ2Click}
+      >
         Sexual Misconduct
-      </button>
-      <button name="domesticQ2" onClick={handleQ2Click}>
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        name="domesticQ2"
+        onClick={handleQ2Click}
+      >
         Domestic Violence
-      </button>
-      <button name="discQ2" onClick={handleQ2Click}>
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        name="discQ2"
+        onClick={handleQ2Click}
+      >
         Discrimination
-      </button>
-      <button name="otherQ2" onClick={handleQ2Click}>
+      </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        name="otherQ2"
+        onClick={handleQ2Click}
+      >
         Other
-      </button>
-      
+      </Button>
     </div>
   );
 
   const q3Form = (
       <form>
-        <button onClick={handleQ1Click}>q1Form</button>
+        <Button variant="contained" onClick={handleQ1Click}>q1Form</Button>
       </form>
     );
 
@@ -154,7 +187,9 @@ const PerpVotingComponent = ({ perpInfo, myPerpCancelled}) => {
           <div className="pp-info-vote-question">
             <span>{currentQuestion}</span>
           </div>
-          <div className="pp-info-vote-options">{currentQuestionForm}</div>
+          <div className="pp-info-vote-options">
+            <ThemeProvider theme = {theme}>{currentQuestionForm}</ThemeProvider>
+          </div>
         </div>
       )}
     </div>

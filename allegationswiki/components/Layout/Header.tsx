@@ -1,6 +1,12 @@
 import Link from "next/link";
+import RandomPerp from "./RandomPerp";
+import { useRouter } from "next/router";
 
 function Header() {
+  const router = useRouter();
+
+  const { pid } = router.query;
+
     const padding = {
     padding: 5,
     fontSize: 22,
@@ -21,11 +27,7 @@ function Header() {
         <div className="header-gap-2"></div>
 
         <div className="header-gap-2"></div>
-        <div className="header-request-new">
-          <Link style={padding} href="/perp/random">
-            Random Perp
-          </Link>
-        </div>
+        <RandomPerp />
       </header>
     );
 }
